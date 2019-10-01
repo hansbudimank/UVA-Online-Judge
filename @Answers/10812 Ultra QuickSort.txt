@@ -1,0 +1,54 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+long long int mergesort(vector<int> a, int x, int y, long long int k) {
+	if (y == x) return k;
+	k = mergesort(a, x, (x + y) / 2, k);
+	k = mergesort(a, (x + y) / 2 + 1, y, k);
+	vector<int> temp;
+	for (int tem=0, i = x, i1 = (int)(x + y) / 2 + 1
+		, j = (x + y) / 2, j1 = y, l = 0;;) {
+		if (i > j && i1 > j1)break;
+		else {
+			if (i > j) {
+				while (i1 <= j1) {
+					tem = a[i1], i1++, l++;
+					temp.push_back(tem);
+				}
+			}
+			else if (i1 > j1) {
+				while (i <= j) {
+					tem = a[i], i++, l++;
+					temp.push_back(tem);
+				}
+			}
+			else if (a[i] > a[i1]) {
+				tem = a[i1], k += (j - i + 1), l++, i1++;
+				temp.push_back(tem);
+			}
+			else if (a[i] < a[i1]) {
+				tem = a[i], l++, i++;
+				temp.push_back(tem);
+			}
+		}
+	}
+	for (int i = x, j = 0; i <= y; i++, j++)a[i] = temp[j];
+	return k;
+}
+int main() {
+	int n,a;
+	/*int* a = new int[500000];*/
+	vector<int> vec;
+	long long int k;
+	while (cin >> n) {
+		if (n == 0)break;
+		k = 0;
+		for (int i = 0; i < n; i++) {
+			cin >> a;
+			vec.push_back(a);
+		}
+		k = mergesort(vec, 0, n - 1, k);
+		cout <<"Here : "<< k << endl;
+	}
+	return 0;
+}

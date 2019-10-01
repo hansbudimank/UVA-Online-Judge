@@ -1,0 +1,17 @@
+#include<iostream>
+#include<iomanip>
+#include<cmath>
+#define PI atan(1)*4
+using namespace std;
+int main() {
+	cout << setprecision(6) << fixed;
+	double a, b;
+	string c;
+	while (cin >> a >> b>>c) {
+		if(c=="min")b /= 60;
+		b = fmod(b,360);
+		if (b > 180)b = 360 - b;
+		cout << 2 * PI * (6440 + a) * b / 360 << 
+			" "<< 2 * (6440 + a) * sin(b*PI / 360) << endl;
+	}
+}

@@ -1,0 +1,27 @@
+#include<iostream>
+#include<sstream>
+#include<cstring>
+using namespace std;
+int main() {
+	int a;
+	string trash;
+	cin >> a;
+	getchar();
+	getchar();
+	for (int j = 1;j <= a;j++) {
+		cout << "Case #" << j << ":" << endl;
+		while (getline(cin, trash)) {
+			if (trash == "") break;
+			stringstream s(trash);
+			int i = 0;
+			while (getline(s, trash, ' ')) {
+				if (trash == "") continue;
+				if (trash.length() - 1 < i) continue;
+				cout << trash[i];
+				i++;
+			}
+			cout << endl;
+		}
+		if (j < a)cout << endl;
+	}
+}

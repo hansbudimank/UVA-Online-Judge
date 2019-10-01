@@ -1,0 +1,35 @@
+#include <iostream>
+#include<sstream>
+#include <cstdio>
+#define MAX 10005
+using namespace std;
+int main2() {
+	int T, i, N, j, rev;
+	cin >> T;
+	for (i = 1;i <= T;i++) {
+		long long int a[MAX];
+		string c;
+		getline(cin, c);
+		getline(cin, c);
+		stringstream s(c);
+		int k = 0;
+		while (s >> c) {
+			if (k == 2)N = stoi(c);
+			k++;
+		}
+		rev = N * N;
+		for (j = 0;j < N * N;j++) {
+			cin >> a[j];
+		}
+		k = N * N - 1;
+		for (int j = 0;j < N+N/2;j++) {
+			if (a[j] != a[k]) {
+				cout << "Test #" << i << ": Non-symmetric." << endl;
+				break;
+			}
+			if(j== N + N / 2 -1) cout << "Test #" << i << ": Symmetric." << endl;
+			k--;
+		}
+	}
+	return 0;
+}

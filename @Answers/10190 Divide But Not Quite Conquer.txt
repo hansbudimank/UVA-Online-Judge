@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int a, b;
+	while (cin >> a >> b) {
+		if (a < 2 || b < 2) {
+			cout << "Boring!" << endl;
+			continue;
+		}
+		int c[40],i=0;
+		c[i++] = a;
+		while (a % b == 0) {
+			a /= b;
+			c[i++] = a;
+		}
+		if (a != 1)cout << "Boring!" << endl;
+		else {
+			for (int j = 0;j < i;j++) {
+				cout << c[j];
+				if (j < i - 1)cout << " ";
+			}
+			cout << endl;
+		}
+	}
+}

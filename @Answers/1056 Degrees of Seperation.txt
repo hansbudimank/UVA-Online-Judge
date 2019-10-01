@@ -1,0 +1,46 @@
+#include<iostream>
+#include<map>
+#include<vector>
+#include<sstream>
+using namespace std;
+#define MAX 999999
+int main() {
+	int a, b,c=0;
+	while (cin >> a >> b) {
+		if (a == 0 || b == 0) break;
+		map<string, int> name;
+		vector<vector<int>> vec(a);
+		for (int i = 0;i < a;i++) {
+			vec[i] = vector<int>(a);
+			for (int j = 0;j < a;j++) {
+				vec[i][j] = MAX;
+			}
+		}
+		string n1, n2;
+		int tem=0;
+		while (b--) {
+			cin >> n1 >> n2;
+			if (name.find(n1) == name.end()) {
+				name[n1] = tem;
+				tem++;
+			}
+			if (name.find(n2) == name.end()) {
+				name[n2] = tem;
+				tem++;
+			}
+			vec[name.find(n1)->second][name.find(n2)->second] =
+				vec[name.find(n2)->second][name.find(n1)->second] = 1;
+		}
+		tem = 0;
+		for (int i = 0;i < a;i++)
+			for (int j = 0;j < a;j++)
+				for (int k = 0;k < a;k++)
+					if (vec[j][k] > vec[j][i] + vec[i][k])
+						vec[j][k] = vec[j][i] + vec[i][k];
+		for (int i = 0;i < a;i++)
+			for (int j = i + 1;j < a;j++)
+				if (tem < vec[i][j])
+					tem = vec[i][j];
+		cout << "Network " << ++c << ": " << ((tem < MAX) ? to_string(tem) : "DISCONNECTED") << endl << endl;
+	}
+}

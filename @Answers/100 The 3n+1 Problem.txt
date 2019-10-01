@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int a, b;
+	while (cin >> a >> b) {
+		if (b < a) {
+			int tem = a;
+			a = b;
+			b = tem;
+		}
+		int max = 0;
+		for (int i = a;i <= b;i++) {
+			int c = i, j = 1;
+			while (c != 1) {
+				if (c % 2 == 1)c = 3*c + 1;
+				else c /= 2;
+				j++;
+			}
+			if (max < j)max = j;
+		}
+		cout << a << " " << b << " " << max << endl;
+	}
+}

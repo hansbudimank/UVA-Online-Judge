@@ -1,0 +1,31 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+void rec(long long a, int flag) {
+	string b[4] = { "kuti","lakh","hajar","shata" };
+	if (a != 0) {
+		if (a / 10000000 != 0) {
+			rec(a / 10000000, 0);
+		}
+		else flag = 1;
+		int c[4] = { 0 };
+		c[0] = (a / 100000) % 100;
+		c[1] = (a / 1000) % 100;
+		c[2] = (a / 10) % 100;
+		c[3] = a % 10;
+		for (int i = 0;i < 4;i++) {
+			if (i == 0 && c[i] == 0 && flag == 0)cout << " " << b[i];
+			if (c[i] != 0)cout << " " << c[i] << " " << b[i];
+		}
+	}
+}
+int main() {
+	long long a, j = 1;
+	while (cin >> a) {
+		cout << setw(4) << j++ << ".";
+		rec(a / 100, 0);
+		if (a == 0)cout << " 0";
+		else if (a % 100 != 0)cout << " " << a % 100;
+		cout << endl;
+	}
+}

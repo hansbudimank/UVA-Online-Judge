@@ -1,0 +1,36 @@
+#include<iostream>
+#include<sstream>
+#include<stdio.h>
+#include<cmath>
+using namespace std;
+int returnVal(char x[3]) {
+	int z = 0,y=0;
+	for (int i = 2;i >= 0;i--) {
+		z += ((int)x[y] - 65) * pow(26, i);
+		y++;
+	}
+	return z;
+}
+int main() {
+	int a;
+	cin >> a;
+	while (a--) {
+		string input;
+		cin >> input;
+		stringstream s(input);
+		char b[3];
+		int c=0,d,i=0;
+		while (getline(s, input, '-')) {
+			stringstream ss(input);
+			if(i==0) {
+				for (int k = 0;k < input.size();k++) {
+					b[k] = input[k];
+				}
+			}
+			else ss >> c;
+			i++;
+		}
+		d = returnVal(b);
+		cout << ((abs(c - d) <= 100) ? "nice" : "not nice") << endl;
+	}
+}

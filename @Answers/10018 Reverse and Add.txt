@@ -1,0 +1,25 @@
+#include<sstream>
+#include<iostream>
+using namespace std;
+int main() {
+	int a;
+	cin >> a;
+	for (int i = 0;i < a;i++) {
+		unsigned int b,j=0,C=0;
+		cin >> b;
+		while (j < 1000 && b != C) {
+			string tem = to_string(b),c="";
+			for (int k = tem.length()-1;k >=0;k--) {
+				c += tem[k];
+			}
+			stringstream s(c);
+			s >> C;
+			if (b == C)break;
+			else {
+				b += C;
+				j++;
+			}
+		}
+		cout << j << " " << b << endl;
+	}
+}

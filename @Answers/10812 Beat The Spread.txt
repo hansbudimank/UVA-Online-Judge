@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main(){
+	long long int c, a, b, s, d, i;
+	while (cin>>c){
+		for (i = 0;i < c;i++){
+			cin>>s>>d;
+			a = s + d;
+			b = s - d;
+			if ((a % 2) || (b % 2) || (b < 0))
+				cout << "impossible\n";
+			else
+				cout << a / 2 << " " << b / 2 << endl;
+		}
+	}
+}

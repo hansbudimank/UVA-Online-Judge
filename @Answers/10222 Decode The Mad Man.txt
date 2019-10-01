@@ -1,0 +1,23 @@
+#include<sstream>
+#include<iostream>
+using namespace std;
+int main() {
+	char a[] = { "`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./" };
+	string b;
+	while (getline(cin,b)) {
+		for (int i = 0;i < b.length();i++) {
+			if (b[i] == ' ')
+				cout << " ";
+			else {
+				if (b[i] <= 'Z' && b[i] >= 'A')
+					b[i] = b[i] + ' ';
+				for (int j = 0;j < sizeof(a) / sizeof(char);j++) //strlen(a)
+					if (a[j] == b[i]) {
+						cout << char(a[j - 2]);
+						break;
+					}
+			}
+		}
+		cout << endl;
+	}
+}

@@ -1,0 +1,25 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main() {
+	int a;
+	while (cin >> a) {
+		for (int i = 0;i < a;i++) {
+			int b,c[15],tem[15],sum=1000,d;
+			cin >> b;
+			for (int j = 0;j < b;j++) {
+				cin >> c[j];
+			}d = 0;
+			while (sum != 0 && d<1000) {
+				sum = 0;
+				for (int j = 0;j < b;j++) {
+					(j!=b-1)?tem[j] = abs(c[j] - c[j + 1]): tem[j] = abs(c[j] - c[0]);
+					sum += tem[j];
+				}
+				for (int j = 0;j < b;j++)c[j] = tem[j];
+				d++;
+			}
+			cout << ((sum == 0) ? "ZERO" : "LOOP" )<< endl;
+		}
+	}
+}

@@ -1,0 +1,24 @@
+#include<map>
+#include<iostream>
+using namespace std;
+int main() {
+	int a;
+	cin >> a;
+	for (int i = 0;i < a;) {
+		map<string, int> c;
+		int b,e,f;
+		string d,g;
+		cin >> b;
+		for (int j = 0;j < b;j++) {
+			cin >> d >> e;
+			c[d] = e;
+		}
+		cin >> f >> g;
+		if (c.find(g) != c.end()) {
+			if (c.find(g)->second <= f)cout << "Case " << ++i << ": Yesss" << endl;
+			else if (c.find(g)->second <= f + 5)cout << "Case " << ++i << ": Late" << endl;
+			else cout << "Case " << ++i << ": Do your own homework!" << endl;
+		}
+		else cout << "Case " << ++i << ": Do your own homework!" << endl;
+	}
+}

@@ -1,0 +1,22 @@
+#include<iostream>
+#include<vector>
+#include<sstream>
+using namespace std;
+int main() {
+	int a;
+	while (cin >> a) {
+		string b;
+		getline(cin, b);
+		getline(cin, b);
+		stringstream s(b);
+		vector<int> v;
+		while (s >> b)
+			v.push_back(stoi(b));
+		int sum = 0,exp = 1;
+		for (int i = v.size() - 1 - 1;i >= 0;i--) {
+			sum += v[i] * exp * (v.size() - 1 - i);
+			exp *= a;
+		}
+		cout << sum << endl;
+	}
+}

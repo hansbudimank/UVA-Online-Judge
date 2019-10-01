@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main() {
+	int a;
+	cin >> a;
+	for (int i = 0;i < a;i++) {
+		long long b, c,j;
+		cin >> b >> c;
+		long long diff = c-b;
+		for (j = 2;diff >= 0;j += 2) {
+			if (diff - j < 0)break;
+			else diff -= j;
+		}
+		if (diff == 0)cout << j - 2 << endl;
+		else if (diff <= j / 2)cout << j - 1 << endl;
+		else cout << j << endl;
+	}
+}

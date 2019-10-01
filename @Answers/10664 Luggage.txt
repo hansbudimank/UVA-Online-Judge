@@ -1,0 +1,25 @@
+#include<iostream>
+#include<sstream>
+using namespace std;
+int main() {
+	int a;
+	string input;
+	getline(cin, input);
+	stringstream sss(input);
+	sss >> a;
+	for (int i = 0;i < a;i++) {
+		if (a > 20 || a < 1)continue;
+		int sum=0,c = 0,b;
+		getline(cin, input);
+		stringstream s(input);
+		while (getline(s, input, ' ')) {
+			stringstream ss(input);
+			ss >> b;
+			sum += b;
+			if (b % 2 == 1)c++;
+			if (c == 2)c = 0;
+		}
+		if (sum > 200)continue;
+		cout << ((c==0) ? "YES" : "NO") << endl;
+	}
+}

@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main() {
+	long long unsigned a, b,tem;
+	while (cin >> a >> b) {
+		if (a < b) {
+			tem = a;
+			a = b;
+			b = tem;
+		}
+		cout << a - b << endl;
+	}
+}
